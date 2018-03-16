@@ -1,4 +1,46 @@
 /*
+    Elements:
+*/
+
+@font-face {
+    font-family: "Inter-UI";
+    font-weight: 400;
+    src: url("../fonts/Inter-UI-Regular.woff2") format("woff2")
+}
+
+@font-face {
+    font-family: "Inter-UI";
+    font-weight: 700;
+    src: url("../fonts/Inter-UI-Bold.woff2") format("woff2")
+}
+
+@font-face {
+    font-family: "DroidSerrif";
+    font-weight: 400;
+    src: url("../fonts/DroidSerif-Regular-webfont.woff") format("woff")
+}
+
+@font-face {
+    font-family: "DroidSerrif";
+    font-weight: 700;
+    src: url("../fonts/DroidSerif-Bold-webfont.woff") format("woff")
+}
+
+@font-face {
+    font-family: "DroidSerrif";
+    font-weight: 400;
+    font-style: italic;
+    src: url("../fonts/DroidSerif-Italic-webfont.woff") format("woff")
+}
+
+@font-face {
+    font-family: "DroidSerrif";
+    font-weight: 700;
+    font-style: italic;
+    src: url("../fonts/DroidSerif-BoldItalic-webfont.woff") format("woff")
+}
+
+/*
     Elements: Page
     ---
     Default markup for page level elements
@@ -7,14 +49,16 @@
 html {
     font-size: 16px;
     line-height: 1.5;
-    font-family: "Helvetica Neue", Helvetica, arial, sans-serif;
-    color: #111;
-    padding: 48px 24px 24px;
+    /* font-family: "Inter-UI", Helvetica, arial, sans-serif;*/
+    font-family: "DroidSerrif", Georgia, serif;
+    color: #5C6366;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 body {
-    max-width: 42em;
-    margin: 0 auto;
+    /*max-width: 42em;*/
+    /*margin: 0 auto;*/
 }
 
 /*
@@ -25,13 +69,13 @@ body {
  */
 
 ::-moz-selection {
-    background: #e85e00;
+    background: #00A1E6;
     color: white;
     text-shadow: none;
 }
 
 ::selection {
-    background: #e85e00;
+    background: #00A1E6;
     color: white;
     text-shadow: none;
 }
@@ -53,10 +97,13 @@ img {
     Default markup for typographic elements
 */
 
+h1, h2, h3 {
+    color: #17181A;
+}
+
 h1 {
-    font-family: "Times New Roman", serif;
+    font-family: 'Playfair Display', serif;
     font-size: 36px;
-    font-weight: normal;
     line-height: 40px;
     margin: 0 0 24px;
 }
@@ -67,37 +114,31 @@ h2 {
     margin: 0 0 24px;
 }
 
+*+h2 {
+    margin-top: 48px;
+}
+
 h3 {
     font-size: 18px;
     line-height: 24px;
     margin: 0 0 24px;
 }
 
-h4,
-h5,
-h6 {
+h4, h5, h6 {
     font-size: 16px;
     line-height: 24px;
     margin: 0 0 24px;
 }
 
-p,
-ol,
-ul,
-dl,
-table,
-address,
-figure {
+p, ol, ul, dl, table, address, figure {
     margin: 0 0 24px;
 }
 
-ul,
-ol {
+ul, ol {
     padding-left: 24px;
 }
 
-li ul,
-li ol {
+li ul, li ol {
     margin-bottom: 0;
 }
 
@@ -117,7 +158,7 @@ blockquote * {
 figcaption {
     font-size: 12px;
     line-height: 16px;
-    padding-top: 8px;
+    /*padding-top: 8px;*/
     color: Grey;
 }
 
@@ -129,21 +170,73 @@ hr {
 }
 
 a {
-    color: RoyalBlue;
+    color: #00A1E6;
     transition: all .1s ease-in-out;
 }
 
-a:visited,
-a:active {
-    color: BlueViolet;
+a:visited, a:active {
+    color: #00E6A1;
 }
 
-a:hover,
-a:focus {
+a:hover, a:focus {
     color: Crimson;
+    color: #1ABAFF;
+}
+
+.c-author {
+    display: flex;
+    align-items: center;
+}
+
+.c-author__image {
+    width: 56px;
+    height: 56px;
+    border-radius: 100%;
+}
+
+.c-author__caption {
+    padding-top: 0;
+}
+
+.c-author__name, .c-author__meta {
+    margin-bottom: 0;
+}
+
+.c-author__name {
+    font-size: 16px;
+    line-height: 16px;
+}
+
+.c-author__meta {
+    font-family: "Inter-UI", Helvetica, arial, sans-serif;
+    margin-top: 4px;
+    font-size: 14px;
+    line-height: 16px;
+}
+
+/*
+    Components: Article
+*/
+
+.c-article__header, .c-article__body {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.c-article__header {
+    padding: 24px 24px 0;
 }
 
 /* Small devices (landscape phones, 576px and up) */
+
+@media (min-width: 768px) {
+    .c-article__header {
+        padding: 48px 48px 24px;
+    }
+    .c-article__author {
+        margin-bottom: 48px;
+    }
+}
 
 @media (min-width: 576px) {}
 
@@ -175,9 +268,7 @@ a:focus {
 */
 
 @media print {
-    *,
-    *:before,
-    *:after {
+    *, *:before, *:after {
         background: transparent !important;
         color: #000 !important;
         /* Black prints faster:
@@ -185,8 +276,7 @@ a:focus {
         box-shadow: none !important;
         text-shadow: none !important;
     }
-    a,
-    a:visited {
+    a, a:visited {
         text-decoration: underline;
     }
     a[href]:after {
@@ -199,15 +289,13 @@ a:focus {
      * Don't show links that are fragment identifiers,
      * or use the `javascript:` pseudo protocol
      */
-    a[href^="#"]:after,
-    a[href^="javascript:"]:after {
+    a[href^="#"]:after, a[href^="javascript:"]:after {
         content: "";
     }
     pre {
         white-space: pre-wrap !important;
     }
-    pre,
-    blockquote {
+    pre, blockquote {
         border: 1px solid #999;
         page-break-inside: avoid;
     }
@@ -218,18 +306,14 @@ a:focus {
     thead {
         display: table-header-group;
     }
-    tr,
-    img {
+    tr, img {
         page-break-inside: avoid;
     }
-    p,
-    h2,
-    h3 {
+    p, h2, h3 {
         orphans: 3;
         widows: 3;
     }
-    h2,
-    h3 {
+    h2, h3 {
         page-break-after: avoid;
     }
 }
